@@ -151,13 +151,30 @@
 
       function openProductPopup(id) {
         const popup = document.getElementById(`${id}-popup`);
-        popup.classList.remove("hidden");
+        if (popup) {
+          popup.classList.remove("hidden");
+
+          // Scroll popup into view below header
+          setTimeout(() => {
+            popup.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 100);
+
+          document.body.style.overflow = "hidden";
+        }
       }
+      // function openProductPopup(id) {
+      //   const popup = document.getElementById(`${id}-popup`);
+      //   popup.classList.remove("hidden");
+      // }
 
       function closeProductPopup(id) {
         const popup = document.getElementById(`${id}-popup`);
         if (popup) {
           popup.classList.add("hidden");
+
+          // ✅ Restore scroll
+          document.body.style.overflow = "";
+          document.documentElement.style.overflow = "";
 
           // Auto-collapse benefits section
           const details = popup.querySelector(".product-details");
@@ -288,10 +305,20 @@
             const popup = document.createElement("div");
             popup.id = `${product.id}-popup`;
             popup.className = "product-popup hidden";
+
+            popup.innerHTML = `
+    <div class="popup-inner">
+      <button class="popup-close-btn" onclick="closeProductPopup('${product.id}')">×</button>
+      <h3>${product.name}</h3>
+      <p>${product.description}</p>
+    </div>
+  `;
+
             popup.innerHTML = `
           <div class="popup-overlay" onclick="closeProductPopup('${
             product.id
           }')"></div>
+
           <div class="popup-content">
             <div class="product-card hover-carousel" data-category="${
               product.id
@@ -350,6 +377,20 @@
           });
         });
       }
+
+      function setupPopupListeners() {
+        document
+          .getElementById("product-popups")
+          .addEventListener("click", (e) => {
+            const closeId = e.target.getAttribute("data-close");
+            if (closeId) {
+              const popup = document.getElementById(closeId);
+              if (popup) popup.remove();
+            }
+          });
+      }
+
+      setupPopupListeners();
 
       function moveSlide(button, direction) {
         const wrapper = button.closest(".carousel-wrapper");
