@@ -902,31 +902,38 @@ input[type="number"]:focus {
 
 /* Responsive Carousel */
 
-.carousel-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .carousel-window {
-  position: relative;
-  width: 300px; /* match .step-img width */
-  height: auto;
-  overflow: hidden;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.3s ease;
+  gap: 16px;
 }
 
 .step-img {
-  width: 300px;
   flex-shrink: 0;
-  object-fit: contain;
+  width: 100%;
+  scroll-snap-align: center;
+  object-fit: cover;
 }
 
+.carousel-window {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 /* Responsive Grid + Styled Price Section */
 
 .section-title {
@@ -974,15 +981,15 @@ input[type="number"]:focus {
 }
 
 /* Container grid */
-.thumbnail-grid {
+/* .thumbnail-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  /* justify-content: center; */
-}
+
+} 
 
 /* dynamic & modular */
 
@@ -998,7 +1005,7 @@ input[type="number"]:focus {
 } */
 
 /* Thumbnail card */
-.product-thumbnail {
+/* .product-thumbnail {
   width: 100%;
   background: #fff;
   border-radius: 8px;
@@ -1010,44 +1017,115 @@ input[type="number"]:focus {
 }
 .product-thumbnail:hover {
   transform: scale(1.02);
-}
+} */
 
 /* Image */
-.thumbnail-img {
+/* .thumbnail-img {
   width: 100%;
   max-width: 180px;
   height: auto;
   object-fit: contain;
   margin-bottom: 8px;
+} */
+
+.thumbnail-grid {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+  padding: 16px;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+
+#product-thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 16px;
+}
+
+.product-thumbnail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 230px; /* Increased size */
+  min-height: 300px; /* Ensures enough space for name + price */
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 12px;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  overflow: visible; /* Prevents content from spilling out */
+  transition: transform 0.2s ease;
+  height: fit-content;
+}
+
+.product-thumbnail:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.thumbnail-img {
+  width: 100%;
+  height: auto;
+  max-height: 140px;
+  object-fit: contain;
+  /* background-color: #f0f0f0; */
+  border-radius: 6px;
 }
 
 /* Title */
+
 .thumbnail-title {
+  flex-grow: 1;
+  flex-shrink: 0;
+  overflow-wrap: break-word;
+  margin: 10px 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+  word-wrap: break-word;
+  max-width: 100%;
+  text-align: center;
+}
+
+.thumbnail-title_old {
+  margin: 10px 0 6px;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 6px;
-  color: #333;
+  color: #222;
+  text-align: center;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 /* Price box */
 .thumbnail-price-box {
-  margin-top: 6px;
+  margin-top: auto;
 }
 
 .thumbnail-offer-badge {
   display: inline-block;
-  background-color: #ff9800;
+  background-color: #ff9800; /* #ff5722 */
   color: white;
   font-size: 12px;
-  padding: 2px 6px;
+  padding: 3px 8px;
   border-radius: 4px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .thumbnail-price-tag {
   font-size: 14px;
   font-weight: bold;
-  color: #2e7d32;
+  color: #2e7d32; /* #444 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1055,6 +1133,7 @@ input[type="number"]:focus {
 }
 
 .price-icon {
+  margin-right: 4px;
   font-size: 16px;
 }
 
@@ -1064,6 +1143,8 @@ input[type="number"]:focus {
 
 .price {
   font-size: 16px;
+  font-weight: bold;
+  color: #2e7d32;
 }
 
 @media (max-width: 480px) {
@@ -1072,7 +1153,8 @@ input[type="number"]:focus {
   }
 
   .thumbnail-title {
-    font-size: 14px;
+    word-wrap: break-word;
+    font-size: 15px;
   }
   .thumbnail-price-tag {
     font-size: 13px;
@@ -1222,4 +1304,82 @@ input[type="number"]:focus {
 
 .hidden {
   display: none !important;
+}
+
+.back-button {
+  display: inline-block;
+  margin: 20px;
+  padding: 8px 16px;
+  background-color: #e0f7e9;
+  color: #2e7d32;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #c8e6c9;
+}
+
+/* Dot Navigation */
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  touch-action: pan-y; /* Prevent vertical scroll interference */
+  will-change: transform;
+  width: 100%;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  object-fit: cover;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-dots button {
+  border: none;
+  background-color: #ccc;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background-color: #333;
+}
+
+.carousel-dots button.active {
+  background-color: #333;
+}
+
+* {
+  box-sizing: border-box;
 }

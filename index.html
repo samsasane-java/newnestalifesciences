@@ -69,13 +69,16 @@
     </section>
 
     <section id="products">
-      <h2 class="section-title">🌿 Shop Ayurvedic Wellness Products</h2>
+      <h2 class="section-title">🌿New Shop Ayurvedic Wellness Products</h2>
       <p class="section-subtitle">
         Pure • Herbal • FSSAI Certified • Delivered Fresh
       </p>
 
-      <div id="product-thumbnails" class="thumbnail-grid"></div>
-      <div id="product-popups"></div>
+      <div style="overflow-x: auto">
+        <div id="product-thumbnails" class="thumbnail-grid"></div>
+      </div>
+
+      <!-- <div id="product-thumbnails" class="thumbnail-grid"></div> -->
     </section>
 
     <section id="voice" class="testimonial-section">
@@ -117,7 +120,7 @@
         </div>
         <div class="contact-item">
           <i class="fas fa-phone-alt"></i>
-          <a href="tel:+919226192324">+91 9226192324</a>
+          <a href="tel:+919960150897">+91 9960150897</a>
         </div>
         <div class="contact-item">
           <i class="fab fa-instagram"></i>
@@ -140,340 +143,44 @@
       </div>
     </footer>
 
+    <script src="products.js"></script>
+    <!-- contains your products array -->
     <script>
-      function toggleDetails(toggleBtn) {
-        const details = toggleBtn
-          .closest(".product-info")
-          .querySelector(".product-details");
-        details.classList.toggle("collapsed");
-      }
-      document.addEventListener("DOMContentLoaded", renderProducts);
-
-      function openProductPopup(id) {
-        const popup = document.getElementById(`${id}-popup`);
-        if (popup) {
-          popup.classList.remove("hidden");
-
-          // Scroll popup into view below header
-          setTimeout(() => {
-            popup.scrollIntoView({ behavior: "smooth", block: "start" });
-          }, 100);
-
-          document.body.style.overflow = "hidden";
-        }
-      }
-      // function openProductPopup(id) {
-      //   const popup = document.getElementById(`${id}-popup`);
-      //   popup.classList.remove("hidden");
-      // }
-
-      function closeProductPopup(id) {
-        const popup = document.getElementById(`${id}-popup`);
-        if (popup) {
-          popup.classList.add("hidden");
-
-          // ✅ Restore scroll
-          document.body.style.overflow = "";
-          document.documentElement.style.overflow = "";
-
-          // Auto-collapse benefits section
-          const details = popup.querySelector(".product-details");
-          if (details) {
-            details.classList.add("collapsed");
-            details.classList.remove("expanded");
-          }
-
-          // Optional: reset toggle label/icon if needed
-          const toggle = popup.querySelector(".info-toggle");
-          if (toggle) {
-            toggle.classList.remove("active");
-          }
-        }
-      }
-
-      const products = [
-        {
-          id: "Vednamukti",
-          name: "Vednamukti Oil",
-          price: 130,
-          images: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
-          description:
-            "Experience natural pain relief with Vednamukti Oil — a potent Ayurvedic blend of Nilgiri Oil, Menthol Crystals, Mahanarayan Oil, Clove Oil, Dashmool, and Gandhapura. Formulated to soothe joint pain, backaches, sore muscles, and stiffness, it absorbs quickly without leaving a greasy residue.",
-          ingredients: [
-            "Nilgiri Oil",
-            "Menthol Crystals",
-            "Mahanarayan Oil",
-            "Clove Oil",
-            "Dashmool",
-            "Gandhapura",
-          ],
-          benefits: [
-            "Relieves joint stiffness",
-            "Reduces inflammation",
-            "Promotes natural healing",
-            "Non-greasy & fast-absorbing",
-          ],
-        },
-        {
-          id: "Cough Relief",
-          name: "Cough Care Juice",
-          price: 130,
-          images: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
-          description:
-            "Soothe your throat and support respiratory health with Cough Care Juice — a herbal formulation enriched with Tulsi, Mulethi, and Honey. Ideal for dry and wet cough, it helps clear congestion and boosts immunity naturally.",
-          ingredients: [
-            "Tulsi",
-            "Mulethi",
-            "Honey",
-            "Pippali",
-            "Ginger",
-            "Vasaka",
-          ],
-          benefits: [
-            "Soothes sore throat",
-            "Relieves dry and wet cough",
-            "Supports respiratory health",
-            "Boosts natural immunity",
-          ],
-        },
-        {
-          id: "body gain",
-          name: "Detox Juice (250 ml)",
-          price: 199,
-          images: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
-          description:
-            "Build strength naturally with this 100% herbal tonic powered by Ashwagandha, Shatavari, Safed Musli, Aloe Vera, and Gokhru. This Ayurvedic blend promotes muscle gain, enhances stamina, and supports hormonal balance while improving endurance, recovery, and metabolism. Rich in adaptogens and free from chemicals, it’s a safe, FSSAI-certified solution for holistic fitness.",
-          ingredients: [
-            "Ashwagandha",
-            "Shatavari",
-            "Safed Musli",
-            "Aloe Vera",
-            "Gokhru",
-          ],
-          benefits: [
-            "100% Herbal & Ayurvedic",
-            "Boosts Muscle Gain & Stamina",
-            "Enhances Mental Focus & Recovery",
-            "Balances Hormones Naturally",
-            "Improves Metabolism & Energy Levels",
-          ],
-        },
-        {
-          id: "skin and hair",
-          name: "Skin & Hair Care Juice (250 ml)",
-          price: 199,
-          images: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
-          description:
-            "Glow from within with Nesta Life Sciences Skin & Hair Care Juice — a natural Ayurvedic blend of Neem, Aloe Vera, Haldi, Haritaki, and Manjistha. Rich in antioxidants, Omega-3s, and Vitamins C & E, it helps detoxify, boost collagen, and protect against sun and pollution. FSSAI certified, GMP manufactured, and free from chemicals, it’s your daily ritual for radiant skin and healthy hair.",
-          ingredients: ["Neem", "Aloe Vera", "Haldi", "Haritaki", "Manjistha"],
-          benefits: [
-            "100% Ayurvedic & Natural",
-            "Detoxifies from Within",
-            "Promotes Radiant Skin",
-            "Strengthens Hair Roots",
-            "Protects Against Sun & Pollution",
-          ],
-        },
-      ];
-
       function renderProducts() {
         const thumbContainer = document.getElementById("product-thumbnails");
-        const popupContainer = document.getElementById("product-popups");
+        thumbContainer.innerHTML = "";
 
-        requestAnimationFrame(() => {
-          thumbContainer.innerHTML = "";
-          popupContainer.innerHTML = "";
-
-          products.forEach((product) => {
-            const thumb = document.createElement("div");
-            thumb.className = "product-thumbnail";
-            thumb.innerHTML = `
-  <img src="${product.id}/${product.images[0]}" class="thumbnail-img" />
-  <h4 class="thumbnail-title">${product.name}</h4>
-  <div class="thumbnail-price-box">
-    <span class="thumbnail-offer-badge">Limited Offer</span>
-    <p class="thumbnail-price-tag">
-      <span class="price-icon">💰</span>
-      <span class="price-label">Only</span>
-      <span class="price">₹${product.price}</span>
-    </p>
-  </div>
-`;
-            thumb.onclick = () => openProductPopup(product.id);
-            thumbContainer.appendChild(thumb);
-
-            const popup = document.createElement("div");
-            popup.id = `${product.id}-popup`;
-            popup.className = "product-popup hidden";
-
-            popup.innerHTML = `
-    <div class="popup-inner">
-      <button class="popup-close-btn" onclick="closeProductPopup('${product.id}')">×</button>
-      <h3>${product.name}</h3>
-      <p>${product.description}</p>
-    </div>
-  `;
-
-            popup.innerHTML = `
-          <div class="popup-overlay" onclick="closeProductPopup('${
-            product.id
-          }')"></div>
-
-          <div class="popup-content">
-            <div class="product-card hover-carousel" data-category="${
-              product.id
-            }">
-              <div class="carousel-wrapper">
-                <button class="nav-btn left-btn" onclick="moveSlide(this,-1)">&#10094;</button>
-                <button class="nav-btn right-btn" onclick="moveSlide(this,1)">&#10095;</button>
-                <div class="carousel-window">
-  <div class="carousel-track" data-index="0">
-    ${product.images
-      .map((img) => `<img src="${product.id}/${img}" class="step-img" />`)
-      .join("")}
-  </div>
-</div>
-              </div>
-              <div class="product-info">
-                <h3>${product.name}</h3>
-                <div class="info-toggle" onclick="toggleDetails(this)">
-                  <span class="info-icon">📋</span>
-                  <span class="info-label">Explore Benefits</span>
-                </div>
-                <div class="product-details collapsed">
-  <p class="product-description">${product.description}</p>
-
-  <h4 class="section-title ingredients-title">Ingredients:</h4>
-  <ul class="product-ingredients">
-    ${product.ingredients.map((ing) => `<li>🧪 ${ing}</li>`).join("")}
-  </ul>
-
-  <h4 class="section-title benefits-title">Benefits:</h4>
-  <ul class="product-benefits">
-    ${product.benefits.map((b) => `<li>✔️ ${b}</li>`).join("")}
-  </ul>
-</div>
-                <div class="product-order">
-                  <div class="price-box">
-                    <span class="offer-badge">Limited Offer</span>
-                    <p class="price-tag">
-                      <span class="price-icon">💰</span>
-                      <span class="price-label">Only</span>
-                      <span class="price" data-price="${product.price}">₹${
-              product.price
-            }</span>
-                    </p>
-                  </div>
-                  <input type="number" class="qty-input" placeholder="qty" min="1" />
-                  <button onclick="orderProduct(this,'${
-                    product.name
-                  }')">Order Now</button>
-                </div>
-              </div>
+        products.forEach((product) => {
+          const thumb = document.createElement("div");
+          thumb.className = "product-thumbnail";
+          thumb.innerHTML = `
+            <img src="${product.id}/${product.images[0]}" class="thumbnail-img" />
+            <h4 class="thumbnail-title">${product.name}</h4>
+            <div class="thumbnail-price-box">
+              <span class="thumbnail-offer-badge">Limited Offer</span>
+              <p class="thumbnail-price-tag">
+                <span class="price-icon">💰</span>
+                <span class="price-label">Only</span>
+                <span class="price">₹${product.price}</span>
+              </p>
             </div>
-          </div>
-        `;
-            popupContainer.appendChild(popup);
-          });
+          `;
+          thumb.onclick = () => {
+            window.location.href = `product.html?id=${product.id}`;
+          };
+          thumbContainer.appendChild(thumb);
         });
       }
+    </script>
 
-      function setupPopupListeners() {
-        document
-          .getElementById("product-popups")
-          .addEventListener("click", (e) => {
-            const closeId = e.target.getAttribute("data-close");
-            if (closeId) {
-              const popup = document.getElementById(closeId);
-              if (popup) popup.remove();
-            }
-          });
-      }
-
-      setupPopupListeners();
-
-      function moveSlide(button, direction) {
-        const wrapper = button.closest(".carousel-wrapper");
-        const track = wrapper.querySelector(".carousel-track");
-        const images = track.querySelectorAll(".step-img");
-
-        let currentIndex = parseInt(track.dataset.index) || 0;
-        const maxIndex = images.length - 1;
-
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = 0;
-        if (currentIndex > maxIndex) currentIndex = maxIndex;
-
-        const imageWidth = images[0].offsetWidth;
-        track.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
-        track.dataset.index = currentIndex;
-      }
-
-      // Toggle logic for each product card
-      document.querySelectorAll(".info-toggle").forEach((toggleBox) => {
-        toggleBox.addEventListener("click", (event) => {
-          event.stopPropagation(); // Prevent triggering outside click
-
-          const clickedCard = toggleBox.closest(".product-card");
-          const clickedDetails = clickedCard.querySelector(".product-details");
-          const clickedInput = clickedCard.querySelector(".qty-input");
-          const label = toggleBox.querySelector(".info-label");
-          const icon = toggleBox.querySelector(".info-icon");
-
-          // Collapse all other cards and clear their inputs
-          document.querySelectorAll(".product-card").forEach((card) => {
-            const details = card.querySelector(".product-details");
-            const input = card.querySelector(".qty-input");
-            const toggle = card.querySelector(".info-toggle");
-            const toggleLabel = toggle?.querySelector(".info-label");
-            const toggleIcon = toggle?.querySelector(".info-icon");
-
-            if (card !== clickedCard) {
-              details.classList.remove("expanded");
-              input.value = "";
-              if (toggleLabel && toggleIcon) {
-                toggleLabel.textContent = "Explore Benefits";
-                toggleIcon.textContent = "📋";
-              }
-            }
-          });
-
-          // Toggle clicked card
-          const isExpanded = clickedDetails.classList.contains("expanded");
-          clickedDetails.classList.toggle("expanded");
-
-          if (label && icon) {
-            label.textContent = isExpanded
-              ? "Explore Benefits"
-              : "Hide Benefits";
-            icon.textContent = isExpanded ? "📋" : "❌";
-          }
-        });
+    <!-- contains renderProducts() -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        renderProducts();
       });
+    </script>
 
-      // Global click listener to collapse everything when clicking outside
-      document.addEventListener("click", (event) => {
-        const clickedInsideCard = event.target.closest(".product-card");
-
-        if (!clickedInsideCard) {
-          document.querySelectorAll(".product-card").forEach((card) => {
-            const details = card.querySelector(".product-details");
-            const input = card.querySelector(".qty-input");
-            const toggle = card.querySelector(".info-toggle");
-            const label = toggle?.querySelector(".info-label");
-            const icon = toggle?.querySelector(".info-icon");
-
-            details.classList.remove("expanded");
-            input.value = "";
-
-            if (label && icon) {
-              label.textContent = "Explore Benefits";
-              icon.textContent = "📋";
-            }
-          });
-        }
-      });
-
+    <script>
       // active link
 
       const sections = document.querySelectorAll("section[id]");
@@ -555,111 +262,6 @@
         const nav = document.querySelector(".nav-links");
         nav.classList.toggle("show");
       }
-
-      // Moving button
-      const slideState = new Map();
-
-      function moveSlide(button, direction) {
-        const wrapper = button.closest(".carousel-wrapper");
-        const track = wrapper.querySelector(".carousel-track");
-        const totalImages = track.children.length;
-
-        // Use wrapper as unique key
-        if (!slideState.has(wrapper)) slideState.set(wrapper, 0);
-
-        let currentIndex = slideState.get(wrapper);
-        currentIndex += direction;
-
-        if (currentIndex < 0) currentIndex = totalImages - 1;
-        if (currentIndex >= totalImages) currentIndex = 0;
-
-        track.style.transform = `translateX(-${100 * currentIndex}%)`;
-        slideState.set(wrapper, currentIndex);
-      }
-
-      // Whats up message
-
-      function showCustomAlert(message) {
-        document.getElementById(
-          "alertMessage"
-        ).textContent = `Oops! ${message}`;
-        document.getElementById("customAlert").style.display = "block";
-      }
-
-      function closeAlert() {
-        document.getElementById("customAlert").style.display = "none";
-      }
-
-      const ownerNumber = "9226192324";
-
-      function orderProduct(button, productName) {
-        console.log("productName", productName);
-        const productCard = button.closest(".product-order");
-        console.log("productCard", productCard);
-        const qtyInput = productCard.querySelector(".qty-input");
-        console.log("qtyInput", qtyInput);
-        const priceElement = productCard.querySelector(".price");
-        console.log("priceElement", priceElement);
-
-        const qty = parseInt(qtyInput.value);
-        console.log("qty", qty);
-        if (!qty || qty <= 0) {
-          showCustomAlert(
-            "Ordering zero bottles? Bold move. But let’s try a real number."
-          );
-          return;
-        }
-
-        const price = parseFloat(priceElement.getAttribute("data-price"));
-        if (isNaN(price)) {
-          alert("Price not found or invalid.");
-          return;
-        }
-
-        const total = price * qty;
-        const message = `Hello!, I want to order ${qty} unit(s) of ${productName} at ₹${price} each. Total: ₹${total}. Let me know how to proceed with payment and delivery!`;
-        const encodedMessage = encodeURIComponent(message);
-
-        window.open(
-          `https://wa.me/${ownerNumber}?text=${encodedMessage}`,
-          "_blank"
-        );
-      }
-
-      // Multi-carousel logic
-      // document.querySelectorAll(".carousel-track").forEach((track) => {
-      //   const images = track.children;
-      //   let index = 0;
-
-      //   setInterval(() => {
-      //     index = (index + 1) % images.length;
-      //     track.style.transform = `translateX(-${index * 100}%)`;
-      //   }, 3000);
-      // });
-
-      const searchInput = document.querySelector(".search-bar");
-      const filterDropdown = document.querySelector(".filter-dropdown");
-      const productCards = document.querySelectorAll(".product-card");
-
-      function filterProducts() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const selectedCategory = filterDropdown.value;
-
-        productCards.forEach((card) => {
-          const title = card.querySelector("h3").textContent.toLowerCase();
-          const category = card.dataset.category;
-
-          const matchesSearch = title.includes(searchTerm);
-          const matchesCategory =
-            !selectedCategory || category === selectedCategory;
-
-          card.style.display =
-            matchesSearch && matchesCategory ? "block" : "none";
-        });
-      }
-
-      searchInput.addEventListener("input", filterProducts);
-      filterDropdown.addEventListener("change", filterProducts);
     </script>
   </body>
 </html>

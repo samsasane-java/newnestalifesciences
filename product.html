@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a href="index.html" class="back-button">← Back to Products</a>
+
+    <section id="product-detail"></section>
+
+    <script src="products.js"></script>
+    <!-- contains your `products` array -->
+
+    <script>
+      function getProductIdFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("id");
+      }
+    </script>
+
+    <script>
+      function getProductIdFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("id");
+      }
+
+      function renderProductDetail() {
+        const productId = getProductIdFromURL();
+        const product = products.find((p) => p.id === productId);
+        if (!product) {
+          document.getElementById("product-detail").innerHTML =
+            "<p>Product not found.</p>";
+          return;
+        }
+
+        document.title = `${product.name} – Ayurvedic Wellness`;
+
+        document.getElementById("product-detail").innerHTML = `
+      
+      <div class="product-card hover-carousel" data-category="${product.id}">
+        <div class="carousel">
+          <div class="carousel-track">
+            ${product.images
+              .map(
+                (img) =>
+                  `<img src="${product.id}/${img}" class="carousel-slide" />`
+              )
+              .join("")}
+          </div>
+          <div class="carousel-dots"></div>
+        </div>
+        <div class="product-info">
+          <h3>${product.name}</h3>
+          <div class="info-toggle" onclick="toggleDetails(this)">
+            <span class="info-icon">📋</span>
+            <span class="info-label">Explore Benefits</span>
+          </div>
+          <div class="product-details collapsed">
+            <p class="product-description">${product.description}</p>
+            <h4 class="section-title ingredients-title">Ingredients:</h4>
+            <ul class="product-ingredients">
+              ${product.ingredients.map((ing) => `<li>🧪 ${ing}</li>`).join("")}
+            </ul>
+            <h4 class="section-title benefits-title">Benefits:</h4>
+            <ul class="product-benefits">
+              ${product.benefits.map((b) => `<li>✔️ ${b}</li>`).join("")}
+            </ul>
+          </div>
+          <div class="product-order">
+            <div class="price-box">
+              <span class="offer-badge">Limited Offer</span>
+              <p class="price-tag">
+                <span class="price-icon">💰</span>
+                <span class="price-label">Only</span>
+                <span class="price" data-price="${product.price}">₹${
+          product.price
+        }</span>
+              </p>
+            </div>
+            <input type="number" class="qty-input" placeholder="qty" min="1" />
+            <button onclick="orderProduct(this,'${
+              product.name
+            }')">Order Now</button>
+          </div>
+        </div>
+      </div>
+
+       <!-- 🔔 Custom Alert Box -->
+    <div id="customAlert" class="custom-alert" style="display: none;">
+      <p id="alertMessage"></p>
+      <button onclick="closeAlert()">Close</button>
+    </div>
+    `;
+
+        // ✅ Dot Navigation logic moved here
+        const track = document.querySelector(".carousel-track");
+        const slides = Array.from(track.children);
+        const dotsContainer = document.querySelector(".carousel-dots");
+
+        dotsContainer.innerHTML = ""; // Clear any previous dots
+
+        slides.forEach((_, index) => {
+          const dot = document.createElement("button");
+          dot.classList.add("carousel-dot");
+          if (index === 0) dot.classList.add("active");
+          dot.addEventListener("click", () => {
+            goToSlide(index);
+          });
+          // dot.addEventListener("click", () => {
+          //   currentIndex = index; // sync swipe index
+          //   // track.style.transform = `translateX(-${index * 100}%)`;
+          //   const slideWidth =
+          //     track.getBoundingClientRect().width / slides.length;
+          //   track.style.transform = `translateX(-${index * slideWidth}px)`;
+          //   document
+          //     .querySelectorAll(".carousel-dot")
+          //     .forEach((btn) => btn.classList.remove("active"));
+          //   dot.classList.add("active");
+          // });
+          dotsContainer.appendChild(dot);
+        });
+
+        const carousel = document.querySelector(".carousel");
+        const slideWidth = carousel.offsetWidth;
+
+        function goToSlide(index) {
+          track.style.transform = `translateX(-${index * slideWidth}px)`;
+          document
+            .querySelectorAll(".carousel-dot")
+            .forEach((btn) => btn.classList.remove("active"));
+          dotsContainer.children[index].classList.add("active");
+          currentIndex = index;
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", renderProductDetail);
+
+      let startX = 0;
+      let currentIndex = 0;
+
+      track.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+      });
+
+      track.addEventListener("touchend", (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const deltaX = endX - startX;
+
+        if (Math.abs(deltaX) > 50) {
+          if (deltaX < 0 && currentIndex < slides.length - 1) {
+            currentIndex++;
+          } else if (deltaX > 0 && currentIndex > 0) {
+            currentIndex--;
+          }
+
+          track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+          document
+            .querySelectorAll(".carousel-dot")
+            .forEach((btn) => btn.classList.remove("active"));
+          dotsContainer.children[currentIndex].classList.add("active");
+        }
+      });
+    </script>
+
+    <script>
+      // 🔄 Toggle product details (Explore Benefits)
+      function toggleDetails(toggleBtn) {
+        const details = toggleBtn
+          .closest(".product-info")
+          .querySelector(".product-details");
+
+        const label = toggleBtn.querySelector(".info-label");
+        const icon = toggleBtn.querySelector(".info-icon");
+
+        const isCollapsed = details.classList.contains("collapsed");
+        details.classList.toggle("collapsed");
+
+        if (label && icon) {
+          label.textContent = isCollapsed
+            ? "Hide Benefits"
+            : "Explore Benefits";
+          icon.textContent = isCollapsed ? "❌" : "📋";
+        }
+      }
+
+      // 🎞️ Carousel slide logic
+
+      function moveSlide(button, direction) {
+        const wrapper = button.closest(".carousel-wrapper");
+        const windowEl = wrapper.querySelector(".carousel-window");
+        const track = wrapper.querySelector(".carousel-track");
+        const images = track.querySelectorAll(".step-img");
+
+        let currentIndex = parseInt(track.dataset.index) || 0;
+        const maxIndex = images.length - 1;
+
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = 0;
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+        const imageWidth = images[0].offsetWidth;
+        const gap = 16; // match your CSS gap
+        const offset = currentIndex * (imageWidth + gap);
+
+        windowEl.scrollLeft = offset;
+        track.dataset.index = currentIndex;
+      }
+
+      // Global click listener to collapse everything when clicking outside
+      document.addEventListener("click", (event) => {
+        const clickedInsideCard = event.target.closest(".product-card");
+
+        if (!clickedInsideCard) {
+          document.querySelectorAll(".product-card").forEach((card) => {
+            const details = card.querySelector(".product-details");
+            const input = card.querySelector(".qty-input");
+            const toggle = card.querySelector(".info-toggle");
+            const label = toggle?.querySelector(".info-label");
+            const icon = toggle?.querySelector(".info-icon");
+
+            details.classList.remove("expanded");
+            input.value = "";
+
+            if (label && icon) {
+              label.textContent = "Explore Benefits";
+              icon.textContent = "📋";
+            }
+          });
+        }
+      });
+    </script>
+
+    <!-- <script>
+      // Dot Navigation
+
+      const track = document.querySelector(".carousel-track");
+      const slides = Array.from(track.children);
+      const dotsContainer = document.querySelector(".carousel-dots");
+
+      // Generate dots dynamically
+      slides.forEach((_, index) => {
+        const dot = document.createElement("button");
+        if (index === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => {
+          track.style.transform = `translateX(-${index * 100}%)`;
+          document
+            .querySelectorAll(".carousel-dots button")
+            .forEach((btn) => btn.classList.remove("active"));
+          dot.classList.add("active");
+        });
+        dotsContainer.appendChild(dot);
+      });
+    </script> -->
+
+    <script>
+      // Whats up message
+
+      // 🔔 Show custom alert
+      function showCustomAlert(message) {
+        const alertBox = document.getElementById("customAlert");
+        const alertMessage = document.getElementById("alertMessage");
+
+        if (alertBox && alertMessage) {
+          alertMessage.textContent = `Oops! ${message}`;
+          alertBox.style.display = "block";
+        }
+      }
+
+      // ❌ Close alert
+      function closeAlert() {
+        const alertBox = document.getElementById("customAlert");
+        if (alertBox) alertBox.style.display = "none";
+      }
+
+      // 📦 WhatsApp order logic
+      const ownerNumber = "919960150897";
+
+      function orderProduct(button, productName) {
+        const productCard = button.closest(".product-order");
+        if (!productCard) {
+          showCustomAlert("Could not locate product card.");
+          return;
+        }
+
+        const qtyInput = productCard.querySelector(".qty-input");
+        const priceElement = productCard.querySelector(".price");
+
+        const qty = parseInt(qtyInput?.value);
+        if (!qty || qty <= 0) {
+          showCustomAlert(
+            "Ordering zero bottles? Bold move. But let’s try a real number."
+          );
+          return;
+        }
+
+        const price = parseFloat(priceElement?.getAttribute("data-price"));
+        if (isNaN(price)) {
+          showCustomAlert("Price not found or invalid.");
+          return;
+        }
+
+        const total = price * qty;
+        const message = `Hello! I want to order ${qty} unit(s) of ${productName} at ₹${price} each. Total: ₹${total}. Let me know how to proceed with payment and delivery.`;
+        const encodedMessage = encodeURIComponent(message);
+
+        window.open(
+          `https://wa.me/${ownerNumber}?text=${encodedMessage}`,
+          "_blank"
+        );
+      }
+    </script>
+  </body>
+</html>
