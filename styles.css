@@ -140,6 +140,10 @@ main {
 }
 
 .product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
   padding: 16px;
   text-align: center;
 }
@@ -750,8 +754,9 @@ input[type="number"]:focus {
   transition: max-height 0.3s ease;
 }
 .product-details {
-  max-height: 500px; /* adjust as needed */
+  max-height: auto; /* adjust as needed */
   transition: max-height 0.3s ease;
+  margin-bottom: 20px;
 }
 /* .product-details {
   max-height: 0;
@@ -760,7 +765,7 @@ input[type="number"]:focus {
 } */
 
 .product-details.expanded {
-  max-height: 500px; /* adjust as needed */
+  max-height: auto; /* adjust as needed */
   transition: max-height 0.3s ease;
 }
 
