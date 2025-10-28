@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <a href="index.html" class="back-button">← Back to Products</a>
+    <a href="index.html" class="back-button">← Back to Nesta Products</a>
 
     <section id="product-detail"></section>
 
@@ -127,7 +127,9 @@
         const slideWidth = carousel.offsetWidth;
 
         function goToSlide(index) {
-          track.style.transform = `translateX(-${index * slideWidth}px)`;
+          // track.style.transform = `translateX(-${index * slideWidth}px)`;
+          track.style.transform = `translateX(-${index * 100}%)`;
+
           document
             .querySelectorAll(".carousel-dot")
             .forEach((btn) => btn.classList.remove("active"));

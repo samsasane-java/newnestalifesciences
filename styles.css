@@ -225,13 +225,19 @@ input[type="number"]:focus {
 
 .price-box {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 12px;
   margin-bottom: 12px;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .offer-badge {
+  display: inline-block;
+  text-align: center;
   background-color: #ff9800;
   color: #fff;
   font-size: 0.8rem;
@@ -1258,30 +1264,53 @@ input[type="number"]:focus {
 }
 .product-order {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
   align-items: center;
+  gap: 12px;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .qty-input {
-  width: 80px;
+  width: 100%;
+  max-width: 120px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.product-order button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 160px;
 }
 
 /* Mobile Adjustments */
 @media (max-width: 600px) {
-  .popup-content {
-    padding: 0.5rem;
-  }
-  .step-img {
-    max-width: 100%;
-    width: 100%;
-  }
   .product-order {
     flex-direction: column;
     align-items: stretch;
+    padding: 8px;
   }
-  .qty-input {
-    width: 100%;
+
+  .price-tag {
+    font-size: 13px;
+    gap: 4px;
   }
+
+  .qty-input,
+  .product-order button {
+    max-width: 100%;
+  }
+
   .carousel-track {
     flex-direction: column;
   }
@@ -1335,10 +1364,19 @@ input[type="number"]:focus {
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  touch-action: pan-y; /* Prevent vertical scroll interference */
+  touch-action: pan-y;
+  will-change: transform;
+  width: calc(100% * var(--slide-count)); /* ✅ dynamic width */
+  white-space: nowrap;
+}
+
+/* .carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  touch-action: pan-y; /* Prevent vertical scroll interference 
   will-change: transform;
   width: 100%;
-}
+} */
 
 .carousel-slide {
   flex: 0 0 100%;
