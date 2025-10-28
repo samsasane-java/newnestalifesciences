@@ -829,88 +829,6 @@ input[type="number"]:focus {
 
 /* Thumbnail Card */
 
-/* .product-thumbnail {
-  width: 100%;
-  background: #fff;
-  border-radius: 8px;
-  padding: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.2s ease;
-}
-.product-thumbnail:hover {
-  transform: scale(1.02);
-}
-
-
-
-.thumbnail-img {
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-  object-fit: contain;
-  margin-bottom: 8px;
-}
-
-.thumbnail-title {
-  padding: 0.5rem;
-  font-weight: 600;
-}
-.product-thumbnail:hover {
-  transform: scale(1.03);
-}
-
-@media (max-width: 480px) {
-  #product-thumbnails {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  }
-} */
-
-/* Popup Layout */
-
-.product-popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  overflow-y: auto;
-  z-index: 2000; /* Must be higher than header */
-  padding: 80px 20px 40px; /* Top padding = header height */
-  box-sizing: border-box;
-}
-
-/* .product-popup {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-.popup-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-}
-.popup-content {
-  position: relative;
-  background: #fff;
-  border-radius: 12px;
-  padding: 1rem;
-  max-width: 800px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  animation: fadeIn 0.3s ease;
-  margin-top: 0;
-  scroll-margin-top: 100px;
-}
-
 /* Responsive Carousel */
 
 .carousel-window {
@@ -1063,8 +981,8 @@ input[type="number"]:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 230px; /* Increased size */
-  min-height: 300px; /* Ensures enough space for name + price */
+  width: 300px; /* Increased size */
+  min-height: 400px; /* Ensures enough space for name + price */
   flex-shrink: 0;
   background: #fff;
   border: 1px solid #ccc;
@@ -1086,7 +1004,7 @@ input[type="number"]:focus {
 .thumbnail-img {
   width: 100%;
   height: auto;
-  max-height: 140px;
+  max-height: 100%;
   object-fit: contain;
   /* background-color: #f0f0f0; */
   border-radius: 6px;
@@ -1099,7 +1017,7 @@ input[type="number"]:focus {
   flex-shrink: 0;
   overflow-wrap: break-word;
   margin: 10px 0 6px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   color: #222;
   word-wrap: break-word;
