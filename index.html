@@ -34,41 +34,58 @@
     </div>
 
     <section class="hero-section">
-      <div class="hero-content">
-        <h1>Nature’s Wisdom, Bottled for You</h1>
+      <div class="hero-container">
+        <div class="background-slider">
+          <img src="images/1_j2SHJXJ9MPiLR96oQmye_A.jpg" class="bg-image" />
+          <img
+            src="images/Ancient-Wisdom-Meets-Modern-Science.jpg"
+            class="bg-image"
+          />
+          <img src="images/2.jpg" class="bg-image" />
+          <img src="images/3.jpg" class="bg-image" />
+          <img src="images/herbal-bowl.png" class="bg-image" />
+          <img
+            src="images/herbal-wellness-collection-stockcake.jpg"
+            class="bg-image"
+          />
+          <img src="images/4.jpg" class="bg-image" />
+          <img src="images/image1-27.jpg" class="bg-image" />
+          <!-- Add more images as needed -->
+        </div>
+        <div class="hero-content">
+          <!-- <div class="welcome-banner"> -->
+          <h2>
+            👋 Welcome to
+            <span class="highlight-green">Nest Life Sciences</span>
+          </h2>
+          <p>
+            Rooted in tradition. Backed by science. Crafted for you.<br />
+            Discover the healing power of Ayurveda—personalized, pure, and
+            proven.<br />
+            Let nature lead your wellness journey.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#products" class="btn primary">Explore Remedies</a>
+            <a href="#about" class="btn primary">Why Ayurveda Works</a>
+          </div>
+        </div>
+
+        <!-- <h1>Nature’s Wisdom, Bottled for You</h1>
         <p>Experience holistic healing through time-tested Ayurvedic blends.</p>
         <div class="hero-buttons">
           <a href="#products" class="btn primary">Explore Remedies</a>
           <a href="#about" class="btn secondary">Why Ayurveda Works</a>
-        </div>
+        </div> -->
       </div>
-
-      <!--  Images -->
-      <img
-        src="images/1_j2SHJXJ9MPiLR96oQmye_A.jpg"
-        class="herb1"
-        alt="Leaf 1"
-      />
-      <img
-        src="images/Ancient-Wisdom-Meets-Modern-Science.jpg"
-        class="herb1"
-        alt="Leaf 2"
-      />
-      <img src="images/2.jpg" class="herb1" alt="Herb 1" />
-      <img src="images/3.jpg" class="herb1" alt="Herb 2" />
-      <img src="images/herbal-bowl.png" class="herb1" alt="Herb 2" />
-      <img
-        src="images/herbal-wellness-collection-stockcake.jpg"
-        class="herb1"
-        alt="Herb 2"
-      />
-      <img src="images/4.jpg" class="herb1" alt="Herb 2" />
-      <img src="images/image1-27.jpg" class="herb1" alt="Herb 2" />
     </section>
 
     <section id="about">
       <div class="WhyAyurvedaWorks">
         <h1>
+          <span class="section-heading">🧘‍♀️ Why Ayurveda Works?</span>
+          <br /><br />
+
           <span class="headline">
             <span class="highlight-orange">In today’s fast-paced world</span>,
             it’s easy to feel <span class="highlight-red">off balance</span>.
@@ -262,36 +279,6 @@
       </div>
     </section>
 
-    <!-- <section id="contact" class="contact-section">
-      <h2>Contact Us</h2>
-      <p>We’d love to hear from you! Reach out anytime.</p>
-
-      <div class="contact-details">
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <a href="mailto:info@nestalifesciences.com"
-            >info@nestalifesciences.com</a
-          >
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-phone-alt"></i>
-          <a href="tel:+919960150897">+91 9960150897</a>
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-instagram"></i>
-          <a href="https://instagram.com/nestalifesciences" target="_blank"
-            >Instagram</a
-          >
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-youtube"></i>
-          <a href="https://youtube.com/@nestalifesciences" target="_blank"
-            >YouTube</a
-          >
-        </div>
-      </div>
-    </section> -->
-
     <footer class="site-footer">
       <div class="footer-content">
         <p>&copy; 2025 Nesta Life Sciences. All rights reserved.</p>
@@ -336,61 +323,6 @@
     </script>
 
     <script>
-      // active link
-
-      // const sections = document.querySelectorAll("section[id]");
-      // const navLinks = document.querySelectorAll(".nav-links a");
-
-      // let observer;
-      // let isClickScrolling = false;
-
-      // // Create the observer
-      // function createObserver() {
-      //   observer = new IntersectionObserver(
-      //     (entries) => {
-      //       if (isClickScrolling) return; // Skip updates during click-based scroll
-
-      //       entries.forEach((entry) => {
-      //         if (entry.isIntersecting) {
-      //           const id = entry.target.getAttribute("id");
-      //           navLinks.forEach((link) => {
-      //             link.classList.remove("active");
-      //             if (link.getAttribute("href") === `#${id}`) {
-      //               link.classList.add("active");
-      //             }
-      //           });
-      //         }
-      //       });
-      //     },
-      //     {
-      //       root: null,
-      //       rootMargin: "0px",
-      //       threshold: 0.6,
-      //     }
-      //   );
-
-      //   sections.forEach((section) => observer.observe(section));
-      // }
-
-      // // Handle nav link clicks
-      // navLinks.forEach((link) => {
-      //   link.addEventListener("click", (e) => {
-      //     isClickScrolling = true;
-
-      //     // Remove active from all, add to clicked
-      //     navLinks.forEach((l) => l.classList.remove("active"));
-      //     link.classList.add("active");
-
-      //     // Wait for scroll to finish, then re-enable observer
-      //     setTimeout(() => {
-      //       isClickScrolling = false;
-      //     }, 1000); // Adjust delay based on scroll speed
-      //   });
-      // });
-
-      // // Initialize observer
-      // createObserver();
-
       //Testimonial
 
       let currentTestimonial = 0;
@@ -417,6 +349,28 @@
         const nav = document.querySelector(".nav-links");
         nav.classList.toggle("show");
       }
+    </script>
+
+    <script>
+      let currentIndex = 0;
+      const images = document.querySelectorAll(".bg-image");
+
+      function showImage(index) {
+        images.forEach((img, i) => {
+          img.style.display = i === index ? "block" : "none";
+        });
+      }
+
+      // Show the first image immediately
+      showImage(currentIndex);
+
+      // Start the slideshow after 5 seconds
+      setTimeout(() => {
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % images.length;
+          showImage(currentIndex);
+        }, 5000);
+      }, 5000);
     </script>
   </body>
 </html>

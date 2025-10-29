@@ -62,7 +62,12 @@
             <p class="product-description">${product.description}</p>
             <h4 class="section-title ingredients-title">Ingredients:</h4>
             <ul class="product-ingredients">
-              ${product.ingredients.map((ing) => `<li>🧪 ${ing}</li>`).join("")}
+              ${product.ingredients
+                .map(
+                  (ing) =>
+                    `<li>🧪 <strong>${ing.name}</strong>: ${ing.description}</li>`
+                )
+                .join("")}
             </ul>
             <h4 class="section-title benefits-title">Benefits:</h4>
             <ul class="product-benefits">
