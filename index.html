@@ -69,10 +69,12 @@
     </section>
 
     <section id="products">
-      <h2 class="section-title">🌿New Shop Ayurvedic Wellness Products</h2>
-      <p class="section-subtitle">
-        Pure • Herbal • FSSAI Certified • Delivered Fresh
-      </p>
+      <h2 class="section-title">🌿Shop Ayurvedic Wellness Products</h2>
+      <div class="subtitle-wrapper">
+        <p class="section-subtitle">
+          Pure • Herbal • FSSAI Certified • Delivered Fresh
+        </p>
+      </div>
 
       <div style="overflow-x: auto">
         <div id="product-thumbnails" class="thumbnail-grid"></div>
@@ -183,58 +185,58 @@
     <script>
       // active link
 
-      const sections = document.querySelectorAll("section[id]");
-      const navLinks = document.querySelectorAll(".nav-links a");
+      // const sections = document.querySelectorAll("section[id]");
+      // const navLinks = document.querySelectorAll(".nav-links a");
 
-      let observer;
-      let isClickScrolling = false;
+      // let observer;
+      // let isClickScrolling = false;
 
-      // Create the observer
-      function createObserver() {
-        observer = new IntersectionObserver(
-          (entries) => {
-            if (isClickScrolling) return; // Skip updates during click-based scroll
+      // // Create the observer
+      // function createObserver() {
+      //   observer = new IntersectionObserver(
+      //     (entries) => {
+      //       if (isClickScrolling) return; // Skip updates during click-based scroll
 
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const id = entry.target.getAttribute("id");
-                navLinks.forEach((link) => {
-                  link.classList.remove("active");
-                  if (link.getAttribute("href") === `#${id}`) {
-                    link.classList.add("active");
-                  }
-                });
-              }
-            });
-          },
-          {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.6,
-          }
-        );
+      //       entries.forEach((entry) => {
+      //         if (entry.isIntersecting) {
+      //           const id = entry.target.getAttribute("id");
+      //           navLinks.forEach((link) => {
+      //             link.classList.remove("active");
+      //             if (link.getAttribute("href") === `#${id}`) {
+      //               link.classList.add("active");
+      //             }
+      //           });
+      //         }
+      //       });
+      //     },
+      //     {
+      //       root: null,
+      //       rootMargin: "0px",
+      //       threshold: 0.6,
+      //     }
+      //   );
 
-        sections.forEach((section) => observer.observe(section));
-      }
+      //   sections.forEach((section) => observer.observe(section));
+      // }
 
-      // Handle nav link clicks
-      navLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
-          isClickScrolling = true;
+      // // Handle nav link clicks
+      // navLinks.forEach((link) => {
+      //   link.addEventListener("click", (e) => {
+      //     isClickScrolling = true;
 
-          // Remove active from all, add to clicked
-          navLinks.forEach((l) => l.classList.remove("active"));
-          link.classList.add("active");
+      //     // Remove active from all, add to clicked
+      //     navLinks.forEach((l) => l.classList.remove("active"));
+      //     link.classList.add("active");
 
-          // Wait for scroll to finish, then re-enable observer
-          setTimeout(() => {
-            isClickScrolling = false;
-          }, 1000); // Adjust delay based on scroll speed
-        });
-      });
+      //     // Wait for scroll to finish, then re-enable observer
+      //     setTimeout(() => {
+      //       isClickScrolling = false;
+      //     }, 1000); // Adjust delay based on scroll speed
+      //   });
+      // });
 
-      // Initialize observer
-      createObserver();
+      // // Initialize observer
+      // createObserver();
 
       //Testimonial
 
