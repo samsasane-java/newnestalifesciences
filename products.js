@@ -33,7 +33,7 @@ const products = [
   {
     id: "Cough Relief",
     name: "Cough Care Juice",
-    price: 130,
+    price: 144,
     images: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
     description:
       "Soothe your throat and support respiratory health with Cough Care Juice — a herbal formulation enriched with Tulsi, Mulethi, and Honey. Ideal for dry and wet cough, it helps clear congestion and boosts immunity naturally.",

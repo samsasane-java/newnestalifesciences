@@ -637,8 +637,92 @@ input[type="number"]:focus {
   }
 }
 /* contact */
-
 .contact-section {
+  padding: 60px 20px;
+  /* background: linear-gradient(135deg, #e0f7fa, #f1f8e9); */
+  background: linear-gradient(to right, #f0f9ff, #dff1ff);
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  color: #00796b;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.contact-item {
+  background: #e0f7fa;
+  border-left: 6px solid #00796b;
+  border-radius: 10px;
+  padding: 15px 20px;
+  max-width: 400px;
+  flex: 1 1 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.contact-item i {
+  font-size: 1.4rem;
+  color: #004d40;
+  margin-right: 10px;
+}
+
+.contact-item a {
+  color: #00796b;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+  color: #004d40;
+}
+
+.contact-intro {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #00796b; /* Teal for wellness vibe */
+  background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .contact-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-item i {
+    margin-bottom: 5px;
+  }
+}
+
+/* .contact-section {
   background: linear-gradient(to right, #f0f9ff, #dff1ff);
   padding: 60px 20px;
   text-align: center;
@@ -689,10 +773,10 @@ input[type="number"]:focus {
 
 .contact-item a:hover {
   color: #005fa3;
-}
+} */
 
 /* Responsive tweaks */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .contact-details {
     flex-direction: column;
     align-items: center;
@@ -701,7 +785,7 @@ input[type="number"]:focus {
   .contact-item {
     justify-content: center;
   }
-}
+} */
 
 /* Responsive tweaks */
 @media (max-width: 480px) {
