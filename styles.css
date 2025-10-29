@@ -379,7 +379,7 @@ input[type="number"]:focus {
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(to right, #0077cc, #00b4db);
-  padding: 16px 24px;
+  padding: 28px 24px;
   color: white;
   position: sticky;
   top: 0;
@@ -473,7 +473,7 @@ input[type="number"]:focus {
     display: block;
   }
 }
-
+/* 
 #about {
   background: linear-gradient(to right, #f0f9ff, #dff1ff);
   padding: 60px 20px;
@@ -496,7 +496,7 @@ input[type="number"]:focus {
   font-family: "Segoe UI", sans-serif;
 }
 
-/* Optional: subtle fade-in animation */
+ Optional: subtle fade-in animation 
 #about {
   animation: fadeInAbout 0.8s ease-in-out;
 }
@@ -527,7 +527,7 @@ input[type="number"]:focus {
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
@@ -1510,5 +1510,405 @@ input[type="number"]:focus {
   .carousel-slide {
     height: auto; /* or auto, depending on your image ratio */
     object-fit: contain;
+  }
+}
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  color: #2e3d27;
+}
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #fdfdfd; /* Light background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.6); /* Light transparent white */
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-content h1 {
+  font-size: 3vw;
+  margin-bottom: 1rem;
+  color: #2e2e2e;
+}
+
+.hero-content p {
+  font-size: 1.5vw;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+.primary {
+  background: #4caf50;
+  color: white;
+}
+
+.secondary {
+  background: #fff;
+  color: #4caf50;
+  border: 2px solid #4caf50;
+}
+
+.herb1 {
+  position: absolute;
+  width: 25vw;
+  opacity: 0.3;
+  animation: float 30s linear infinite;
+  pointer-events: none;
+}
+
+/* Positioning each image uniquely */
+.herb1:nth-of-type(2) {
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+.herb1:nth-of-type(3) {
+  top: 20%;
+  left: 70%;
+  animation-delay: 5s;
+}
+.herb1:nth-of-type(4) {
+  top: 50%;
+  left: 30%;
+  animation-delay: 10s;
+}
+.herb1:nth-of-type(5) {
+  top: 60%;
+  left: 80%;
+  animation-delay: 15s;
+}
+.herb1:nth-of-type(6) {
+  top: 70%;
+  left: 10%;
+  animation-delay: 20s;
+}
+.herb1:nth-of-type(7) {
+  top: 30%;
+  left: 50%;
+  animation-delay: 25s;
+}
+.herb1:nth-of-type(8) {
+  top: 40%;
+  left: 20%;
+  animation-delay: 30s;
+}
+.herb1:nth-of-type(9) {
+  top: 80%;
+  left: 60%;
+  animation-delay: 35s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-50px) scale(1.1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+}
+
+/* 📱 Mobile responsiveness */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 6vw;
+  }
+
+  .hero-content p {
+    font-size: 3.5vw;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .herb1 {
+    width: 30vw;
+  }
+}
+
+/* Why Ayurveda Works */
+
+section#about {
+  width: 100%;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+  scroll-margin-top: 80px; /* for smooth anchor scroll */
+}
+
+#about .WhyAyurvedaWorks {
+  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to right, #fdfcfb, #e2d1c3);
+  border-radius: 12px;
+  animation: fadeIn 1.5s ease-in;
+}
+
+h1 {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.headline {
+  font-size: clamp(1.2rem, 2vw + 1rem, 1.8rem);
+  font-weight: 600;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-family: "Segoe UI", sans-serif;
+  color: #3e2723;
+  animation: fadeSlideUp 1.2s ease-in-out;
+  transition: all 0.3s ease;
+}
+
+.headline em {
+  font-style: italic;
+  color: #6d4c41;
+  font-weight: 500;
+}
+
+/* Highlight colors */
+.highlight-green {
+  color: #2e7d32;
+  font-weight: bold;
+}
+.highlight-orange {
+  color: #ef6c00;
+  font-weight: bold;
+}
+.highlight-red {
+  color: #c62828;
+  font-weight: bold;
+}
+.highlight-blue {
+  color: #1565c0;
+  font-weight: bold;
+}
+.highlight-purple {
+  color: #6a1b9a;
+  font-weight: bold;
+}
+.highlight-teal {
+  color: #00897b;
+  font-weight: bold;
+}
+
+/* Entry animation */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+  .headline {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    text-align: center;
+    padding: 0 1rem;
+  }
+}
+
+.subtext {
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.brand {
+  font-weight: bold;
+  color: #00796b;
+}
+
+.features li {
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #6a1b9a;
+  margin-top: 1rem;
+}
+
+.product-list p {
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+.brand-message {
+  display: block;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  font-family: "Segoe UI", sans-serif;
+  color: #4e342e;
+  background: linear-gradient(to right, #fffdf7, #f7ede2);
+  padding: 1.2rem 1.5rem;
+  border-left: 6px solid #ff7043;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.brand-message em {
+  font-style: italic;
+  color: #6d4c41;
+  font-weight: 500;
+}
+
+.brand-message strong {
+  font-weight: 600;
+  color: #3e2723;
+}
+
+/* Highlight colors */
+.highlight-green {
+  color: #2e7d32;
+  font-weight: bold;
+}
+.highlight-orange {
+  color: #ef6c00;
+  font-weight: bold;
+}
+.highlight-red {
+  color: #c62828;
+  font-weight: bold;
+}
+.highlight-blue {
+  color: #1565c0;
+  font-weight: bold;
+}
+.highlight-purple {
+  color: #6a1b9a;
+  font-weight: bold;
+}
+.highlight-teal {
+  color: #00897b;
+  font-weight: bold;
+}
+
+/* Entry animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.explore-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #ff7043;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #d84315;
+}
+
+/* Color Highlights */
+.highlight-green {
+  color: #2e7d32;
+  font-weight: bold;
+}
+.highlight-orange {
+  color: #ef6c00;
+  font-weight: bold;
+}
+.highlight-red {
+  color: #c62828;
+  font-weight: bold;
+}
+.highlight-blue {
+  color: #1565c0;
+  font-weight: bold;
+}
+.highlight-purple {
+  color: #6a1b9a;
+  font-weight: bold;
+}
+.highlight-teal {
+  color: #00897b;
+  font-weight: bold;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

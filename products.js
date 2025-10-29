@@ -83,6 +83,31 @@ const products = [
       "Protects Against Sun & Pollution",
     ],
   },
+  {
+    id: "body detox",
+    name: "Detox Juice (250 ml)",
+    price: 199,
+    images: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
+    description:
+      "Cleanse and energize with Nest Life Sciences Detox Juice — a powerful Ayurvedic blend of 20+ herbs including Green Tea, Amla, Aloe Vera, Ashwagandha, and Moringa. Designed to naturally regulate blood sugar, support liver health, and flush out toxins, this daily tonic boosts immunity, improves digestion, and promotes radiant skin and hair. Rich in Vitamin C and antioxidants, it’s your go-to ritual for full-body wellness. FSSAI certified, GMP manufactured, and free from chemicals.",
+    ingredients: [
+      "Green Tea, Amla, Bahada, Harda ",
+      "Fenugreek, Methi Dhana",
+      "Aloe Vera, Korphad, Noni",
+      "Ashwagandha, Gokhru, Giloy",
+      "Tulsi, Ginger, Ajma, Hing, Black Salt",
+      "Caricacaao, Moringa",
+    ],
+    benefits: [
+      "Regulates Blood Sugar Levels",
+      "Detoxifies the Liver and Body",
+      "Boosts Immunity & Digestion",
+      "Promotes Healthy Hair and Glowing Skin",
+      "Rich in Vitamin C & Antioxidants",
+      "Protects Against Cell & Liver Damage",
+      "Improves Blood Flow and Circulation",
+    ],
+  },
 ];
 
 function enableSwipe(wrapper) {
