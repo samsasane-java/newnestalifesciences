@@ -1017,23 +1017,12 @@ input[type="number"]:focus {
   flex-shrink: 0;
   overflow-wrap: break-word;
   margin: 10px 0 6px;
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 600;
   color: #222;
   word-wrap: break-word;
   max-width: 100%;
   text-align: center;
-}
-
-.thumbnail-title_old {
-  margin: 10px 0 6px;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #222;
-  text-align: center;
-  word-wrap: break-word;
-  max-width: 100%;
 }
 
 /* Price box */
@@ -1045,14 +1034,14 @@ input[type="number"]:focus {
   display: inline-block;
   background-color: #ff9800; /* #ff5722 */
   color: white;
-  font-size: 12px;
+  font-size: 20px;
   padding: 3px 8px;
   border-radius: 4px;
   margin-bottom: 6px;
 }
 
 .thumbnail-price-tag {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: bold;
   color: #2e7d32; /* #444 */
   display: flex;
@@ -1063,15 +1052,15 @@ input[type="number"]:focus {
 
 .price-icon {
   margin-right: 4px;
-  font-size: 16px;
+  font-size: 40px;
 }
 
 .price-label {
-  font-size: 13px;
+  font-size: 25px;
 }
 
 .price {
-  font-size: 16px;
+  font-size: 25px;
   font-weight: bold;
   color: #2e7d32;
 }
@@ -1083,13 +1072,13 @@ input[type="number"]:focus {
 
   .thumbnail-title {
     word-wrap: break-word;
-    font-size: 15px;
+    font-size: 25px;
   }
   .thumbnail-price-tag {
-    font-size: 13px;
+    font-size: 20px;
   }
   .price {
-    font-size: 14px;
+    font-size: 25px;
   }
 }
 

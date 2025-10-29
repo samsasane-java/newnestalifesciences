@@ -47,7 +47,7 @@ const products = [
   },
   {
     id: "body gain",
-    name: "Detox Juice (250 ml)",
+    name: "Body Gain Juice (250 ml)",
     price: 199,
     images: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
     description:
