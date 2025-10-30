@@ -293,6 +293,9 @@ input[type="number"]:focus {
   .price {
     font-size: 1.1rem;
   }
+  .product-benefits {
+    color: #333; /* ✅ Reinforce color */
+  }
 }
 /* .price-tag {
   font-size: 1.1rem;
@@ -1352,12 +1355,19 @@ html {
 
 .background-slider {
   display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  /* display: flex;
   width: max-content;
-  height: 100%;
+  height: 100%; */
   /* animation: slideImages 40s linear infinite; */
 }
 
 .bg-image {
+  flex-shrink: 0;
   position: absolute;
   top: 0;
   left: 0;
@@ -1386,6 +1396,17 @@ html {
   max-width: 900px;
   opacity: 0.85;
   box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .background-slider {
+    height: 100vh;
+  }
+
+  .bg-image {
+    height: 100vh;
+    object-fit: cover;
+  }
 }
 
 /* Responsive adjustments */
