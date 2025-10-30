@@ -1241,7 +1241,7 @@ input[type="number"]:focus {
   /* aspect-ratio: 4/3; */
   display: flex;
   transition: transform 0.5s ease-in-out;
-  touch-action: pan-y;
+  touch-action: none;
   will-change: transform;
   /* width: 100%; */
   /* overflow: hidden; ✅ Prevent vertical stacking */
