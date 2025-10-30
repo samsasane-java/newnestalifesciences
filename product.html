@@ -14,12 +14,12 @@
     <script src="products.js"></script>
     <!-- contains your `products` array -->
 
-    <script>
+    <!-- <script>
       function getProductIdFromURL() {
         const params = new URLSearchParams(window.location.search);
         return params.get("id");
       }
-    </script>
+    </script> -->
 
     <script>
       function getProductIdFromURL() {
@@ -36,6 +36,9 @@
           return;
         }
 
+        // ✅ Log image paths for debugging
+        console.log(product.images.map((img) => `${product.id}/${img}`));
+
         document.title = `${product.name} – Ayurvedic Wellness`;
 
         document.getElementById("product-detail").innerHTML = `
@@ -43,6 +46,7 @@
       <div class="product-card hover-carousel" data-category="${product.id}">
         <div class="carousel">
           <div class="carousel-track">
+            
             ${product.images
               .map(
                 (img) =>
@@ -100,9 +104,17 @@
     </div>
     `;
 
+        setTimeout(() => {
+          goToSlide(0); // Show first slide after layout settles
+        }, 0);
+
         // ✅ Dot Navigation logic moved here
         const track = document.querySelector(".carousel-track");
         const slides = Array.from(track.children);
+        // ✅ Set dynamic slide count for CSS
+        track.style.setProperty("--slide-count", slides.length);
+
+        // Continue with dot generation and navigation logic
         const dotsContainer = document.querySelector(".carousel-dots");
 
         dotsContainer.innerHTML = ""; // Clear any previous dots
@@ -114,17 +126,7 @@
           dot.addEventListener("click", () => {
             goToSlide(index);
           });
-          // dot.addEventListener("click", () => {
-          //   currentIndex = index; // sync swipe index
-          //   // track.style.transform = `translateX(-${index * 100}%)`;
-          //   const slideWidth =
-          //     track.getBoundingClientRect().width / slides.length;
-          //   track.style.transform = `translateX(-${index * slideWidth}px)`;
-          //   document
-          //     .querySelectorAll(".carousel-dot")
-          //     .forEach((btn) => btn.classList.remove("active"));
-          //   dot.classList.add("active");
-          // });
+
           dotsContainer.appendChild(dot);
         });
 
@@ -132,45 +134,41 @@
         const slideWidth = carousel.offsetWidth;
 
         function goToSlide(index) {
-          // track.style.transform = `translateX(-${index * slideWidth}px)`;
-          track.style.transform = `translateX(-${index * 100}%)`;
-
+          const slideWidth = slides[0].getBoundingClientRect().width;
+          track.style.transform = `translateX(-${index * slideWidth}px)`;
+          console.log(`Slide width: ${slideWidth}, index: ${index}`);
           document
             .querySelectorAll(".carousel-dot")
-            .forEach((btn) => btn.classList.remove("active"));
+            .forEach((dot) => dot.classList.remove("active"));
           dotsContainer.children[index].classList.add("active");
+
           currentIndex = index;
         }
-      }
 
-      document.addEventListener("DOMContentLoaded", renderProductDetail);
+        // document.addEventListener("DOMContentLoaded", renderProductDetail);
 
-      let startX = 0;
-      let currentIndex = 0;
+        let startX = 0;
+        let currentIndex = 0;
 
-      track.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
-      });
+        track.addEventListener("touchstart", (e) => {
+          startX = e.touches[0].clientX;
+        });
 
-      track.addEventListener("touchend", (e) => {
-        const endX = e.changedTouches[0].clientX;
-        const deltaX = endX - startX;
+        track.addEventListener("touchend", (e) => {
+          const endX = e.changedTouches[0].clientX;
+          const deltaX = endX - startX;
 
-        if (Math.abs(deltaX) > 50) {
-          if (deltaX < 0 && currentIndex < slides.length - 1) {
-            currentIndex++;
-          } else if (deltaX > 0 && currentIndex > 0) {
-            currentIndex--;
+          if (Math.abs(deltaX) > 50) {
+            if (deltaX < 0 && currentIndex < slides.length - 1) {
+              currentIndex++;
+            } else if (deltaX > 0 && currentIndex > 0) {
+              currentIndex--;
+            }
+
+            goToSlide(currentIndex); // ✅ use same logic
           }
-
-          track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-          document
-            .querySelectorAll(".carousel-dot")
-            .forEach((btn) => btn.classList.remove("active"));
-          dotsContainer.children[currentIndex].classList.add("active");
-        }
-      });
+        });
+      }
     </script>
 
     <script>
@@ -240,28 +238,6 @@
         }
       });
     </script>
-
-    <!-- <script>
-      // Dot Navigation
-
-      const track = document.querySelector(".carousel-track");
-      const slides = Array.from(track.children);
-      const dotsContainer = document.querySelector(".carousel-dots");
-
-      // Generate dots dynamically
-      slides.forEach((_, index) => {
-        const dot = document.createElement("button");
-        if (index === 0) dot.classList.add("active");
-        dot.addEventListener("click", () => {
-          track.style.transform = `translateX(-${index * 100}%)`;
-          document
-            .querySelectorAll(".carousel-dots button")
-            .forEach((btn) => btn.classList.remove("active"));
-          dot.classList.add("active");
-        });
-        dotsContainer.appendChild(dot);
-      });
-    </script> -->
 
     <script>
       // Whats up message

@@ -493,83 +493,6 @@ input[type="number"]:focus {
     display: block;
   }
 }
-/* 
-#about {
-  background: linear-gradient(to right, #f0f9ff, #dff1ff);
-  padding: 60px 20px;
-  text-align: center;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  max-width: 1000px;
-  margin: 40px auto;
-  transition: all 0.3s ease;
-}
-
-#about h1 {
-  font-size: 1.6rem;
-  line-height: 1.8;
-  color: #333;
-  font-weight: 500;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 10px;
-  font-family: "Segoe UI", sans-serif;
-}
-
- Optional: subtle fade-in animation 
-#about {
-  animation: fadeInAbout 0.8s ease-in-out;
-}
-
-.explore-btn {
-  display: inline-block;
-  margin-top: 24px;
-  padding: 12px 24px;
-  background: #0077cc;
-  color: white;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.explore-btn:hover {
-  background: #005fa3;
-}
-
-@keyframes fadeInAbout {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-} */
-
-/* Responsive tweaks */
-/* @media (max-width: 768px) {
-  #about h1 {
-    font-size: 1.3rem;
-    line-height: 1.6;
-  }
-
-  #about {
-    padding: 40px 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  #about h1 {
-    font-size: 1.1rem;
-  }
-
-  #about {
-    padding: 30px 12px;
-  }
-} */
 
 /* Testimonials */
 
@@ -585,7 +508,7 @@ input[type="number"]:focus {
 .testimonial-section h2 {
   font-size: 1.8rem;
   margin-bottom: 24px;
-  color: #333;
+  color: #00796b;
 }
 
 .testimonial-slider {
@@ -609,7 +532,8 @@ input[type="number"]:focus {
 .testimonial p {
   font-size: 1.1rem;
   font-style: italic;
-  color: #555;
+  color: #1b5e20;
+  font-weight: bold;
 }
 
 .testimonial span {
@@ -1081,54 +1005,6 @@ input[type="number"]:focus {
   }
 }
 
-/* Container grid */
-/* .thumbnail-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-
-} 
-
-/* dynamic & modular */
-
-/* Thumbnails Grid */
-/* #product-thumbnails {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  padding: 20px;
-  width: 100%;
-  text-align: center;
-  box-sizing: border-box;
-} */
-
-/* Thumbnail card */
-/* .product-thumbnail {
-  width: 100%;
-  background: #fff;
-  border-radius: 8px;
-  padding: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  text-align: center;
-  transition: transform 0.2s ease;
-}
-.product-thumbnail:hover {
-  transform: scale(1.02);
-} */
-
-/* Image */
-/* .thumbnail-img {
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-  object-fit: contain;
-  margin-bottom: 8px;
-} */
-
 .thumbnail-grid {
   display: flex;
   flex-direction: row;
@@ -1156,7 +1032,7 @@ input[type="number"]:focus {
   width: 600px; /* Increased size */
   min-height: 700px; /* Ensures enough space for name + price */
   flex-shrink: 0;
-  background: #fff;
+  background: #a8e063;
   border: 2px solid #ccc;
   border-radius: 10px;
   padding: 16px;
@@ -1298,19 +1174,6 @@ input[type="number"]:focus {
 .nav-btn:hover {
   background: rgba(0, 0, 0, 0.7);
 }
-
-/* .carousel-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.carousel-window {
-  width: 300px;
-  overflow: hidden;
-  border-radius: 8px;
-} */
 
 .carousel-track {
   display: flex;
@@ -1469,19 +1332,39 @@ input[type="number"]:focus {
   transition: transform 0.5s ease-in-out;
   touch-action: pan-y;
   will-change: transform;
+  width: 100%;
+  /* overflow: hidden; ✅ Prevent vertical stacking */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* width: calc(100% * var(--slide-count)); */
+}
+
+.carousel-track_old {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  touch-action: pan-y;
+  will-change: transform;
   width: calc(100% * var(--slide-count)); /* ✅ dynamic width */
   white-space: nowrap;
 }
 
-/* .carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  touch-action: pan-y; /* Prevent vertical scroll interference 
-  will-change: transform;
-  width: 100%;
-} */
-
 .carousel-slide {
+  scroll-snap-align: start;
+  flex: 0 0 100%;
+  width: 100%;
+  object-fit: cover;
+  height: auto;
+  display: block;
+  overflow: hidden;
+}
+
+carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.carousel-slide_old {
   flex: 0 0 100%;
   min-width: 100%;
   object-fit: contain;
@@ -1588,18 +1471,11 @@ html {
   display: none;
   z-index: -1;
 }
-/* .bg-image {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  flex-shrink: 0;
-  transition: transform 0.5s ease;
-} */
 
-.hero-content {
+/* .hero-content {
   background: linear-gradient(to right, #fff8f0, #e0f2f1);
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
@@ -1607,10 +1483,47 @@ html {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   padding: 2rem 3rem;
-  border-radius: 16px;
+  border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   text-shadow: var(--text-shadow);
-  /* animation: fadeSlideDown 1.2s ease-in-out; */
+  /* animation: fadeSlideDown 1.2s ease-in-out; 
+} */
+
+.hero-content {
+  background: linear-gradient(to right, #fff8f0, #e0f2f1);
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  padding: 4rem 6rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-shadow: var(--text-shadow);
+  width: 60vw;
+  max-width: 900px;
+  opacity: 0.85;
+  box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 2rem 3rem;
+    width: 90vw;
+    top: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 1.5rem 2rem;
+    font-size: 0.9rem;
+    top: 55%;
+  }
 }
 
 .hero-content h1 {
@@ -1620,20 +1533,21 @@ html {
 }
 
 .hero-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: black;
-  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: white;
+  /* font-weight: 500; */
+  font-weight: bold;
 }
 
 .hero-content h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: black;
+  color: white;
   margin-bottom: 1rem;
 }
 .highlight-green {
-  color: #2e7d32;
+  color: #004d40;
 }
 
 .hero-content button {
@@ -1892,7 +1806,7 @@ h1 {
 
 /* Color Highlights */
 .highlight-green {
-  color: #2e7d32;
+  color: #2e3d27;
   font-weight: bold;
 }
 .highlight-orange {
