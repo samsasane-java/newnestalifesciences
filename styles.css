@@ -1304,7 +1304,7 @@ input[type="number"]:focus {
 
 @media (max-width: 480px) {
   .carousel {
-    height: 220px; /* ✅ smaller carousel height */
+    height: 360px; /* ✅ smaller carousel height */
   }
 
   .carousel-slide img {
